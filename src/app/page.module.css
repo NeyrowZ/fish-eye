@@ -1,0 +1,52 @@
+.photographers {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 320px;
+    row-gap: 80px;
+    padding-top: 40px;
+
+    .photographer {
+        width: 200px;
+
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            h2 {
+                display: inline-block;
+                white-space: nowrap;
+                margin-top: 20px;
+                font-size: 2.25rem;
+                color: #D3573C;
+            }
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+
+            span {
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            .location {
+                font-size: 13px;
+                color: #901C1C;
+            }
+
+            .tagline {
+                font-size: 10px;
+            }
+
+            .price {
+                font-size: 9px;
+                color: #757575;
+            }
+        }
+    }
+}

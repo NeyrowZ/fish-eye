@@ -1,0 +1,67 @@
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    padding: 50px;
+    background: #FAFAFA;
+
+    .details {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            font-size: 4rem;
+            color: #D3573C;
+        }
+
+        .location {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #901C1C;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            color: #525252;
+        }
+    }
+
+    button {
+        padding: 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.25rem;
+        font-weight: 700;
+        font-family: DM Sans, sans-serif;
+        color: #fff;
+        background: #901C1C;
+        transition: all .3s ease;
+        cursor: pointer;
+
+        &:hover {
+            color: #000;
+            background: #DB8876;
+        }
+    }
+}
+
+.price {
+    position: fixed;
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    bottom: 0;
+    right: 3rem;
+    padding: 1.25rem;
+    border-radius: 5px 5px 0 0;
+    background: #DB8876;
+
+    span {    
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+}

@@ -1,0 +1,68 @@
+.gallery {
+    .filter {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-block: 2rem;
+
+        span {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+    }
+
+    .medias {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 95px;
+        row-gap: 50px;
+
+        .media {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 350px;
+
+            img, video {
+                display: block;
+                width: 350px;
+                height: 350px;
+                object-fit: cover;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .details {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: .5rem;
+            
+                h2 {
+                    font-size: 1.5rem;
+                    color: #901C1C;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    gap: .25rem;
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                    color: #901C1C;
+                    white-space: nowrap;
+                    cursor: pointer;
+
+                    .like {
+                        width: 1.25rem;
+                        height: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-weight: 400;
+    font-family: DM Sans, sans-serif;
+}
+
+main {
+    max-width: 1440px;
+    margin-inline: auto;
+
+    header, section {
+        max-width: 1440px;
+        margin-inline: 100px;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+/* button {
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: DM Sans, sans-serif;
+    color: #fff;
+    background: #901C1C;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:hover {
+        color: #000;
+        background: #DB8876;
+    }
+} */
+
+::-webkit-scrollbar {
+    display: none;
+}

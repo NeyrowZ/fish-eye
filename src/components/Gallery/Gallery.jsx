@@ -1,28 +1,28 @@
 "use client";
 import styles from "./Gallery.module.css";
+import { useState } from "react";
+import { updateLikes } from "@/src/actions/services";
 import Select from "@/src/components/Select/Select";
 import Carousel from "../Carousel/Carousel";
-import { useState, useTransition } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { updateLikes } from "@/src/actions/services";
 
 export default function Gallery({ medias, photographer }) {
     const [mediasState, setMediasState] = useState(medias);
-    const [isPending, startTransition] = useTransition();
-
     const [sort, setSort] = useState("popularity");
+
     const options = [
         { label: "Popularité", value: "popularity" },
         { label: "Date", value: "date" },
         { label: "Titre", value: "title" }
     ];
+
     const sortedMedias = [...mediasState].sort((a, b) => {
         if (sort === "popularity") return b.likes - a.likes
         if (sort === "date") return new Date(b.date) - new Date(a.date)
         if (sort === "title") return a.title.localeCompare(b.title)
         return 0
-    })
+    });
 
     const [isOpen, setIsOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,7 +34,7 @@ export default function Gallery({ medias, photographer }) {
 
     const handleLike = (mediaId) => {
         setMediasState(prev => prev.map(media => media.id === mediaId ? { ...media, likes: media.likes + 1 } : media));
-        startTransition(() => updateLikes(mediaId, mediasState.find(m => m.id === mediaId).likes + 1));
+        updateLikes(mediaId, mediasState.find(m => m.id === mediaId).likes + 1);
     }
 
     return (
@@ -56,7 +56,7 @@ export default function Gallery({ medias, photographer }) {
                         </div>
                         <div className={styles.details}>
                             <h2>{m.title}</h2>
-                            <span onClick={() => handleLike(m.id)} disabled={isPending}>
+                            <span onClick={() => handleLike(m.id)}>
                                 {m.likes}
                                 <FontAwesomeIcon icon={faHeart} />
                             </span>

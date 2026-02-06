@@ -1,6 +1,8 @@
 "use client";
 import styles from "./Select.module.css";
 import { useState, useRef, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function Select({ options, value, onChange }) {
     const [open, setOpen] = useState(false);
@@ -20,8 +22,8 @@ export default function Select({ options, value, onChange }) {
     return (
         <div className={styles.select} ref={ref}>
             <button onClick={() => setOpen((o) => !o)}>
-                {selected?.label || "Select…"}
-                <img src="/assets/arrow.svg" alt="Select Arrow"/>
+                {selected.label}
+                <FontAwesomeIcon icon={faChevronDown} />
             </button>
             {open && (
                 <ul className={styles.dropdown}>
@@ -31,7 +33,7 @@ export default function Select({ options, value, onChange }) {
                             onClick={() => {
                                 onChange(o.value);
                                 setOpen(false);
-                            }}>{o.label}{i == 0 && <img src="/assets/arrow.svg"/>}</li>
+                            }}>{o.label}{i == 0 && <FontAwesomeIcon icon={faChevronUp} />}</li>
                     ))}
                 </ul>
             )}

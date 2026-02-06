@@ -2,43 +2,40 @@
 import styles from "./Gallery.module.css";
 import Select from "@/src/components/Select/Select";
 import Carousel from "../Carousel/Carousel";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { updateLikes } from "@/src/actions/services";
 
 export default function Gallery({ medias, photographer }) {
+    const [mediasState, setMediasState] = useState(medias);
+    const [isPending, startTransition] = useTransition();
+
     const [sort, setSort] = useState("popularity");
     const options = [
         { label: "Popularité", value: "popularity" },
         { label: "Date", value: "date" },
         { label: "Titre", value: "title" }
     ];
-    const sortedMedias = [...medias].sort((a, b) => {
-        if (sort === "popularity") return b.likes - a.likes;
-        if (sort === "date") return new Date(b.date) - new Date(a.date);
-        if (sort === "title") return a.title.localeCompare(b.title);
-        return 0;
-    });
+    const sortedMedias = [...mediasState].sort((a, b) => {
+        if (sort === "popularity") return b.likes - a.likes
+        if (sort === "date") return new Date(b.date) - new Date(a.date)
+        if (sort === "title") return a.title.localeCompare(b.title)
+        return 0
+    })
 
     const [isOpen, setIsOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+
     const openModalAt = (index) => {
         setCurrentIndex(index);
         setIsOpen(true);
     };
 
-    const [totalLikes, setTotalLikes] = useState(medias.reduce((sum, media) => sum + media.likes, 0));
-    const [likedIds, setLikedIds] = useState([]);
-
     const handleLike = (mediaId) => {
-        if (likedIds.includes(mediaId)) {
-            setLikedIds(prev => prev.filter(id => id !== mediaId));
-            setTotalLikes(prev => prev - 1);
-        } else {
-            setLikedIds(prev => [...prev, mediaId]);
-            setTotalLikes(prev => prev + 1);
-        }
-    };
+        setMediasState(prev => prev.map(media => media.id === mediaId ? { ...media, likes: media.likes + 1 } : media));
+        startTransition(() => updateLikes(mediaId, mediasState.find(m => m.id === mediaId).likes + 1));
+    }
 
     return (
         <section className={styles.gallery}>
@@ -59,8 +56,8 @@ export default function Gallery({ medias, photographer }) {
                         </div>
                         <div className={styles.details}>
                             <h2>{m.title}</h2>
-                            <span className={likedIds.includes(m.id) ? styles.liked : ''} onClick={() => handleLike(m.id)}>
-                                {m.likes + (likedIds.includes(m.id) ? 1 : 0)}
+                            <span onClick={() => handleLike(m.id)} disabled={isPending}>
+                                {m.likes}
                                 <FontAwesomeIcon icon={faHeart} />
                             </span>
                         </div>
@@ -70,7 +67,7 @@ export default function Gallery({ medias, photographer }) {
             <Carousel isOpen={isOpen} onClose={() => setIsOpen(false)} medias={sortedMedias} index={currentIndex} />
             <div className={styles.price}>
                 <span>
-                    {totalLikes.toLocaleString("fr-FR")}
+                    {mediasState.reduce((sum, media) => sum + media.likes, 0).toLocaleString("fr-FR")}
                     <FontAwesomeIcon icon={faHeart} />
                 </span>
                 <span>{photographer.price}€ / jour</span>

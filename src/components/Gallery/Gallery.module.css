@@ -56,14 +56,8 @@
                     white-space: nowrap;
                     cursor: pointer;
 
-                    transition: all .25s ease;
-
                     svg {
                         height: 1.25rem;
-                    }
-
-                    &.liked {
-                        transform: scale(1.1);
                     }
                 }
             }

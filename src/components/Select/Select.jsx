@@ -23,7 +23,6 @@ export default function Select({ options, value, onChange }) {
                 {selected?.label || "Select…"}
                 <img src="/assets/arrow.svg" alt="Select Arrow"/>
             </button>
-
             {open && (
                 <ul className={styles.dropdown}>
                     {sortedOptions.map((o, i) => (

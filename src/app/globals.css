@@ -21,7 +21,11 @@ a {
     text-decoration: none;
 }
 
-/* button {
+button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     padding: 20px;
     border: none;
     border-radius: 5px;
@@ -30,14 +34,8 @@ a {
     font-family: DM Sans, sans-serif;
     color: #fff;
     background: #901C1C;
-    transition: all .3s ease;
     cursor: pointer;
-
-    &:hover {
-        color: #000;
-        background: #DB8876;
-    }
-} */
+}
 
 ::-webkit-scrollbar {
     display: none;

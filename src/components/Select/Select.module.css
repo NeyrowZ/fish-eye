@@ -40,25 +40,23 @@
         }
     }
 
-    button, .option {
+    .option {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        width: 170px;
         padding: 20px;
         font-size: 1.25rem;
         font-weight: 700;
         font-family: DM Sans, sans-serif;
         color: #fff;
-        text-align: left;
         transition: all .3s ease;
         cursor: pointer;
-        z-index: 1;
+    }
 
-        /* &:hover {
-            color: #000;
-            background: #DB8876;
-        } */
+    button, .option {
+        width: 180px;
+        text-align: left;
+        z-index: 1;
     }
 }

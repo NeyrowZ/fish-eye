@@ -13,7 +13,7 @@
 
     .medias {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
         gap: 95px;
         row-gap: 50px;
@@ -50,15 +50,13 @@
                 span {
                     display: flex;
                     align-items: center;
-                    gap: .25rem;
                     font-size: 1.5rem;
                     font-weight: 500;
                     color: #901C1C;
                     white-space: nowrap;
                     cursor: pointer;
 
-                    .like {
-                        width: 1.25rem;
+                    svg {
                         height: 1.25rem;
                     }
                 }

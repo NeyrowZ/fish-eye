@@ -1,8 +1,10 @@
 import styles from "./page.module.css";
 import { getAllMediasForPhotographer, getPhotographer } from "@/src/lib/prisma-db";
-import Portrait from "@/src/components/Portrait/Portrait";
 import Header from "@/src/components/Header/Header";
+import Portrait from "@/src/components/Portrait/Portrait";
 import Gallery from "@/src/components/Gallery/Gallery";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export default async function PhotographerPage({ params }) {
     const { id } = await params;
@@ -24,7 +26,7 @@ export default async function PhotographerPage({ params }) {
             <div className={styles.price}>
                 <span>
                     {medias.reduce((sum, media) => sum + media.likes, 0).toLocaleString("fr-FR")}
-                    <img src="/assets/like.svg"/>
+                    <FontAwesomeIcon icon={faHeart} />
                 </span>
                 <span>{p.price}€ / jour</span>
             </div>

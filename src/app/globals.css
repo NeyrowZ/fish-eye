@@ -27,6 +27,7 @@ button {
     align-items: center;
     gap: 1rem;
     padding: 20px;
+    width: fit-content;
     border: none;
     border-radius: 5px;
     font-size: 1.25rem;

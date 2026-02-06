@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { getAllMediasForPhotographer, getPhotographer } from "@/src/lib/prisma-db";
 import Header from "@/src/components/Header/Header";
+import Contact from "@/src/components/Contact/Contact";
 import Portrait from "@/src/components/Portrait/Portrait";
 import Gallery from "@/src/components/Gallery/Gallery";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,7 +20,7 @@ export default async function PhotographerPage({ params }) {
                     <span className={styles.location}>{p.city}, {p.country}</span>
                     <span className={styles.tagline}>{p.tagline}</span>
                 </div>
-                <button>Contactez-moi</button>
+                <Contact name={p.name}/>
                 <Portrait photographer={p} />
             </section>
             <Gallery medias={medias} />

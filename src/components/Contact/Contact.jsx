@@ -19,15 +19,15 @@ export default function Contact({ name }) {
                     <div className={styles.fields}>
                         <div className={styles.field}>
                             <label for="firstname">Prénom</label>
-                            <input type="text" id="firstname" />
+                            <input type="text" id="firstname"/>
                         </div>
                         <div className={styles.field}>
                             <label for="lastname">Nom</label>
-                            <input type="text" id="lastname" />
+                            <input type="text" id="lastname"/>
                         </div>
                         <div className={styles.field}>
                             <label for="email">Email</label>
-                            <input type="email" id="email" />
+                            <input type="email" id="email"/>
                         </div>
                         <div className={styles.field}>
                             <label for="message">Votre message</label>

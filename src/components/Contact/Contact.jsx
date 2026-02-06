@@ -6,7 +6,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function Contact({ name }) {
     const [isOpen, setIsOpen] = useState(false);
-
     return (
         <>
             <button onClick={() => setIsOpen(true)} className={styles.contact}>Contactez-moi</button>

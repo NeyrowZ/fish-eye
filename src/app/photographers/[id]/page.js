@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { getAllMediasForPhotographer, getPhotographer } from "@/src/lib/prisma-db";
+import { getAllMediasForPhotographer, getPhotographer, updateNumberOfLikes } from "@/src/lib/prisma-db";
 import Header from "@/src/components/Header/Header";
 import Contact from "@/src/components/Contact/Contact";
 import Portrait from "@/src/components/Portrait/Portrait";
@@ -20,17 +20,10 @@ export default async function PhotographerPage({ params }) {
                     <span className={styles.location}>{p.city}, {p.country}</span>
                     <span className={styles.tagline}>{p.tagline}</span>
                 </div>
-                <Contact name={p.name}/>
+                <Contact name={p.name} />
                 <Portrait photographer={p} />
             </section>
-            <Gallery medias={medias} />
-            <div className={styles.price}>
-                <span>
-                    {medias.reduce((sum, media) => sum + media.likes, 0).toLocaleString("fr-FR")}
-                    <FontAwesomeIcon icon={faHeart} />
-                </span>
-                <span>{p.price}€ / jour</span>
-            </div>
+            <Gallery medias={medias} photographer={p} />
         </>
     );
 }

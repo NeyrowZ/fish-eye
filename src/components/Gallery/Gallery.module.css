@@ -56,10 +56,39 @@
                     white-space: nowrap;
                     cursor: pointer;
 
+                    transition: all .25s ease;
+
                     svg {
                         height: 1.25rem;
                     }
+
+                    &.liked {
+                        transform: scale(1.1);
+                    }
                 }
+            }
+        }
+    }
+    
+    .price {
+        position: fixed;
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+        bottom: 0;
+        right: 3rem;
+        padding: 1.25rem;
+        border-radius: 5px 5px 0 0;
+        background: #DB8876;
+
+        span {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+
+            svg {
+                height: 1.25rem;
             }
         }
     }
